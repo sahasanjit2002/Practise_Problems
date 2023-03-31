@@ -7,32 +7,47 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class QuickSort {
-    public static void swap(int arr[],int i,int j){
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    public static int partition(int arr[],int start,int end){ // [1,7,10,5,9,10,45,11]
-
-        int pivot = arr[end];
-        int i = start - 1;
-        for(int j = start;j<end;j++){
-            if(arr[j]<pivot){
-                i++;
-                swap(arr,i,j);
-            }
+public class MergeSort {
+    public static void merge(int arr[],int beg,int mid,int end){
+        int leftSubArrayLength = (mid-beg)+1;
+        int rightSubArrayLength = (end-mid);
+        int i,j,k;
+        int leftSubArray[] = new int[leftSubArrayLength];
+        int rightSubArray[] = new int[rightSubArrayLength];
+        // copy the elements from main array to the left and right sub arrays
+        for(i = 0;i<leftSubArrayLength;i++){
+            leftSubArray[i] = arr[beg+i];
         }
-        swap(arr,i+1,end);
-        return(i+1);
-
+        for(j = 0;j<rightSubArrayLength;j++){
+            rightSubArray[j] = arr[mid+1+j];
+        }
+        i=0;j=0;
+        k=beg;
+        while (i<leftSubArrayLength && j<rightSubArrayLength){
+            if(leftSubArray[i]<=rightSubArray[j]){
+                arr[k] = leftSubArray[i];
+                i++;
+            }else{
+                arr[k] = rightSubArray[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<leftSubArrayLength){
+            arr[k]=leftSubArray[i];
+            k++;i++;
+        }
+        while(j<rightSubArrayLength){
+            arr[k] = rightSubArray[j];
+            k++;j++;
+        }
     }
-    public static void quickSort(int arr[],int start,int end){
-        if(start<end){
-            int pi = partition(arr, start, end);
-            quickSort(arr, start, pi-1);
-            quickSort(arr, pi+1, end);
+    public static void mergerSort(int arr[],int beg,int end){
+        if(beg<end){
+            int mid = (beg+end)/2;
+            mergerSort(arr,beg,mid);
+            mergerSort(arr,mid+1,end);
+            merge(arr,beg,mid,end);
         }
     }
     public static void display(int arr[]){
@@ -97,10 +112,10 @@ public class QuickSort {
 
         System.out.print("Initial Array :  ");
         display(arr);
-        quickSort(arr,0, arr.length-1);
+        mergerSort(arr,0, arr.length-1);
         System.out.print("Final Array :  ");
         display(arr);
 
-        fileWrite(arr,"Quick Sort");
+        fileWrite(arr,"Merge Sort");
     }
 }

@@ -7,32 +7,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class QuickSort {
+public class SelectionSort {
     public static void swap(int arr[],int i,int j){
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        int t = arr[j];
+        arr[j] = arr[i];
+        arr[i]=t;
     }
-
-    public static int partition(int arr[],int start,int end){ // [1,7,10,5,9,10,45,11]
-
-        int pivot = arr[end];
-        int i = start - 1;
-        for(int j = start;j<end;j++){
-            if(arr[j]<pivot){
-                i++;
-                swap(arr,i,j);
+    public static void selectionSort(int arr[]){
+        for(int i = 0 ; i<arr.length ; i++){
+            int min  =  i;
+            for(int j = i;j<arr.length;j++){
+                if(arr[j]<arr[min]){
+                    min = j;
+                }
             }
-        }
-        swap(arr,i+1,end);
-        return(i+1);
-
-    }
-    public static void quickSort(int arr[],int start,int end){
-        if(start<end){
-            int pi = partition(arr, start, end);
-            quickSort(arr, start, pi-1);
-            quickSort(arr, pi+1, end);
+            swap(arr,i,min);
         }
     }
     public static void display(int arr[]){
@@ -41,7 +30,7 @@ public class QuickSort {
         for(int element:arr){
             System.out.print(element + " , ");
         }
-        System.out.print(" ]");
+        System.out.println(" ]");
     }
     public static void fileInput(String data[]){
         try {
@@ -97,10 +86,10 @@ public class QuickSort {
 
         System.out.print("Initial Array :  ");
         display(arr);
-        quickSort(arr,0, arr.length-1);
+        selectionSort(arr);
         System.out.print("Final Array :  ");
         display(arr);
 
-        fileWrite(arr,"Quick Sort");
+        fileWrite(arr,"Selection Sort");
     }
 }
