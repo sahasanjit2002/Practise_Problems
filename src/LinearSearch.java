@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 public class LinearSearch {
-
-    public class BinarySearch {
         public static int linearSearch(int arr[],int key){
             int start = 0;
             int end = arr.length - 1;
@@ -17,11 +15,9 @@ public class LinearSearch {
             }
             if(index>(arr.length-1))
             {
-                System.out.println("Search Not Fount");
                 return -1;
             }else
             {
-                System.out.println("Search Found at Index "+index);
                 return index;
             }
         }
@@ -50,9 +46,9 @@ public class LinearSearch {
             //input filtering section
             String data[] = new String[3];
             fileInput(data);
-            int start = data[1].indexOf("[");
-            int end = data[1].indexOf("]");
-            String stringInputArray[] = (data[1].substring(start+1,end)).split(",");
+            int start = data[0].indexOf("[");
+            int end = data[0].indexOf("]");
+            String stringInputArray[] = (data[0].substring(start+1,end)).split(",");
             int arr[] = new int[stringInputArray.length],index =0;
             for (String s:stringInputArray){
                 arr[index++] = Integer.parseInt(s);
@@ -70,4 +66,3 @@ public class LinearSearch {
         }
     }
 
-}
