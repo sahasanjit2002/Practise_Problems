@@ -8,3 +8,4 @@ Generated on : 31-03-2023 22:20:57  Insertion Sort : [0, 1, 2, 3, 4, 5, 6, 7, 8,
 Generated on : 31-03-2023 22:24:02  Selection Sort : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 Generated on : 31-03-2023 22:25:05  Merge Sort : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 Generated on : 31-03-2023 22:31:28  Quick Sort : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Generated on : 04-04-2023 22:20:52  Heap Sort : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
