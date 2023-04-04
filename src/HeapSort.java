@@ -137,7 +137,7 @@ public class HeapSort {
         heapSort(arr);
         System.out.print("Final Array :  ");
         display(arr);
-        fileWrite(arr,"Bubble Sort");
+        fileWrite(arr,"Heap Sort");
 
     }
 }
